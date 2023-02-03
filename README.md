@@ -1,5 +1,9 @@
 # MyRevShell
 > 
+> ### (❓) Help:
+> ```
+> myrshell -h | --help
+> ```
 > ### (❗️) Downloads:
 > - Wget:
 > ```
